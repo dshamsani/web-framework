@@ -2,13 +2,6 @@ import { DOM_TYPES } from "./h.js";
 import { setAttributes } from "./utils/attributes.js";
 import { addEventListeners } from "./utils/events.js";
 
-const addProps = (el, props, vdom) => {
-  const { on: events, ...attrs } = props;
-
-  vdom.listeners = addEventListeners(events, el);
-  setAttributes(el, attrs);
-};
-
 /**
  * @description Creates each DOM node for the virtual DOM
  * @argument vdom - Virtual Dom object
@@ -35,6 +28,15 @@ export const mountDOM = (vdom, parentEl) => {
       throw new Error(`Can't mount DOM of type: ${vdom.type}`);
     }
   }
+};
+
+// Adding listeners and attributes to node element & set listneres to vdom node
+const addProps = (el, props, vdom) => {
+  const { on: events, ...attrs } = props;
+
+  vdom.listeners = addEventListeners(events, el);
+  console.log("addProps  vdom:", vdom);
+  setAttributes(el, attrs);
 };
 
 // Creates Fragment Nodes
