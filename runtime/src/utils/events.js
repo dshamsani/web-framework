@@ -1,0 +1,10 @@
+export const addEventListener = (eventName, handler, el) => el.addEventListener(eventName, handler);
+
+// Adding event listeners to an element node
+export const addEventListeners = (listeners = {}, el) => {
+  Object.entries(listeners).forEach(([eventName, handler]) => {
+    addEventListener(eventName, handler, el);
+  });
+
+  return listeners;
+};
