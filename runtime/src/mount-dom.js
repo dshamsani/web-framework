@@ -35,7 +35,6 @@ const addProps = (el, props, vdom) => {
   const { on: events, ...attrs } = props;
 
   vdom.listeners = addEventListeners(events, el);
-  console.log("addProps  vdom:", vdom);
   setAttributes(el, attrs);
 };
 
