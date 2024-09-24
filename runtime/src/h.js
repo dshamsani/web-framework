@@ -34,11 +34,3 @@ export const h = (tag, props = {}, children = []) => {
     children: mapTextNodes(withoutNulls(children)),
   };
 };
-
-console.log(
-  h("form", { class: "login-form", action: "login" }, [
-    h("input", { type: "text", name: "user" }),
-    h("input", { type: "password", name: "pass" }),
-    h("button", { on: { click: () => console.log("Clicked") } }, ["Log in"]),
-  ])
-);
