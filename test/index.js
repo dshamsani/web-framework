@@ -1,5 +1,6 @@
-import { h } from "../runtime/src/h.js";
-import { mountDOM } from "../runtime/src/mount-dom.js";
+import { destroyDOM } from "../src/destroy-dom.js";
+import { h } from "../src/h.js";
+import { mountDOM } from "../src/mount-dom.js";
 
 const vdom = h(
   "div",

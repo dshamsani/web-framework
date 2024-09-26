@@ -8,3 +8,10 @@ export const addEventListeners = (listeners = {}, el) => {
 
   return listeners;
 };
+
+// Removing event listeners
+export const removeEventListeners = (listeners = {}, el) => {
+  Object.entries(listeners).forEach(([eventName, handler]) => {
+    el.removeEventListeners(eventName, handler);
+  });
+};
