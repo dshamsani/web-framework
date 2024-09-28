@@ -4,9 +4,11 @@ export const addEventListener = (eventName: string, handler: () => void, el: HTM
 
 // Adding event listeners to an element node
 export const addEventListeners = (listeners: NODE_LISTENERS, el: HTMLElement) => {
-  Object.entries(listeners).forEach(([eventName, handler]) => {
-    addEventListener(eventName, handler, el);
-  });
+  if (listeners) {
+    Object.entries(listeners).forEach(([eventName, handler]) => {
+      addEventListener(eventName, handler, el);
+    });
+  }
 
   return listeners;
 };
