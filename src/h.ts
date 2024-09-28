@@ -1,4 +1,4 @@
-import type { NODE_ELEMENT, NODE_TEXT, HTML_TAGS } from "./types/global";
+import type { NODE_ELEMENT, NODE_TEXT, HTML_TAGS, NODE_FRAGMENT } from "./types/global";
 import { withoutNulls } from "./utils/array";
 
 // Define constant for each type of Virtual Node
@@ -30,7 +30,7 @@ export const hString = (str: string) => ({ type: DOM_TYPES.TEXT, value: str });
     @returns Virtual node object passed-in tag name, props, children
 
 */
-export const h = (tag: HTML_TAGS, props = {}, children = []) => {
+export const h = (tag: HTML_TAGS, props = {}, children: (NODE_ELEMENT | NODE_TEXT | NODE_FRAGMENT)[]) => {
   return {
     tag,
     props,

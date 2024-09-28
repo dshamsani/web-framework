@@ -131,7 +131,7 @@ export interface NODE_ELEMENT {
   type: "element";
   tag: HTML_TAGS;
   props: NODE_PROPS;
-  children: NODE_ELEMENT[];
+  children: (NODE_ELEMENT | NODE_TEXT | NODE_FRAGMENT)[];
   el?: HTMLElement | Text | null;
   listeners?: NODE_LISTENERS;
 }

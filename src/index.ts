@@ -1,5 +1,5 @@
-import { createApp } from "../src/app.js";
-import { h, hString } from "../src/h.js";
+import { createApp } from "./app";
+import { h, hString } from "./h";
 
 // Counter using framework
 createApp({
