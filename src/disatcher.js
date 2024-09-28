@@ -2,6 +2,7 @@
 
 export class Dispatcher {
   #subs = new Map();
+  #afterHandlers = [];
 
   // Registers a handler function, to respond command with given name
   subscribe(commandName, handler) {
@@ -23,6 +24,16 @@ export class Dispatcher {
     return () => {
       const idx = handlers.indexOf(handler);
       handlers.splice(idx, 1);
+    };
+  }
+
+  // after every command handler function to notify framework about potential state changes
+  afterEveryCommand(handler) {
+    this.#afterHandlers.push(handler);
+
+    return () => {
+      const idx = this.#afterHandlers.indexOf(handler);
+      this.#afterHandlers.splice(idx, 1);
     };
   }
 }
