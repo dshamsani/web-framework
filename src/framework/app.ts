@@ -2,7 +2,7 @@ import type { VDOM } from "./types/global";
 
 import { destroyDOM } from "./destroy-dom";
 import { mountDOM } from "./mount-dom";
-import { Dispatcher } from "./disatcher";
+import { Dispatcher } from "./dispatcher";
 
 // Creates the application object
 export const createApp = ({
