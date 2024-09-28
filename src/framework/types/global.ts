@@ -55,6 +55,7 @@ export type HTML_TAGS =
   | "hr"
   | "html"
   | "i"
+  | "input"
   | "iframe"
   | "img"
   | "ins"
@@ -148,6 +149,6 @@ export interface NODE_TEXT {
   el?: Text | null;
 }
 
-export type VDOM = NODE_TEXT | NODE_FRAGMENT | NODE_ELEMENT;
+export type VDOM = NODE_TEXT | NODE_FRAGMENT | NODE_ELEMENT | null;
 
 export type FC = (state: any, emit: (eventName: string, payload: any) => void) => VDOM;

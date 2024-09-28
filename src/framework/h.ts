@@ -1,4 +1,4 @@
-import type { NODE_ELEMENT, NODE_TEXT, HTML_TAGS, NODE_FRAGMENT } from "./types/global";
+import type { NODE_ELEMENT, NODE_TEXT, HTML_TAGS, NODE_FRAGMENT, VDOM } from "./types/global";
 import { withoutNulls } from "./utils/array";
 
 // Define constant for each type of Virtual Node
@@ -12,7 +12,7 @@ export const DOM_TYPES = {
 const mapTextNodes = (children: (NODE_ELEMENT | NODE_TEXT)[]) => children.map((child) => (typeof child === "string" ? hString(child) : child));
 
 // Creates fragment virtual nodes
-export const hFragment = (vNodes: (NODE_ELEMENT | NODE_TEXT | null)[]) => ({
+export const hFragment = (vNodes: (NODE_ELEMENT | NODE_TEXT | VDOM | null)[]) => ({
   type: DOM_TYPES.FRAGMENT,
   children: mapTextNodes(withoutNulls(vNodes)),
 });
@@ -30,7 +30,7 @@ export const hString = (str: string) => ({ type: DOM_TYPES.TEXT, value: str });
     @returns Virtual node object passed-in tag name, props, children
 
 */
-export const h = (tag: HTML_TAGS, props = {}, children: (NODE_ELEMENT | NODE_TEXT | NODE_FRAGMENT)[]) => {
+export const h = (tag: HTML_TAGS, props = {}, children: (NODE_ELEMENT | NODE_TEXT | NODE_FRAGMENT | string)[]) => {
   return {
     tag,
     props,

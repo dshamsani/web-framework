@@ -7,8 +7,8 @@ import { Dispatcher } from "./dispatcher";
 // Creates the application object
 export const createApp = ({
   state,
-  view,
   reducers = {},
+  view,
 }: {
   state: any;
   view: (state: any, emit: (eventName: string, payload: any) => void) => VDOM;

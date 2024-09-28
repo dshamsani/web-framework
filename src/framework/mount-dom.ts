@@ -10,6 +10,10 @@ import { addEventListeners } from "./utils/events";
  * @argument parentEl - root element to atach Virtual Dom
  */
 export const mountDOM = (vdom: VDOM, parentEl: HTMLElement | null) => {
+  if (!vdom) {
+    return;
+  }
+
   switch (vdom.type) {
     case DOM_TYPES.TEXT: {
       createTextNode(vdom, parentEl);
