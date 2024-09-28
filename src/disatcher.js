@@ -27,7 +27,7 @@ export class Dispatcher {
     };
   }
 
-  // after every command handler function to notify framework about potential state changes
+  // After every command handler function to notify framework about potential state changes
   afterEveryCommand(handler) {
     this.#afterHandlers.push(handler);
 
@@ -35,5 +35,16 @@ export class Dispatcher {
       const idx = this.#afterHandlers.indexOf(handler);
       this.#afterHandlers.splice(idx, 1);
     };
+  }
+
+  // Dispatches a command and calls all the registered handlers.
+  dispatch(commandName, payload) {
+    if (this.#subs.has(commandName)) {
+      this.#subs.get(commandName).forEach((handler) => handler(payload));
+    } else {
+      console.warn(`No handlers for command ${commandName}`);
+    }
+
+    this.#afterHandlers.forEach((handler) => handler());
   }
 }
