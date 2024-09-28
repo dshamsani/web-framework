@@ -12,3 +12,4 @@ Please note: This framework is not production-ready and is not intended for inte
 * Reconciliation Algorithm: Basic reconciliation logic to compare and update the DOM based on state changes.
 * Lightweight: Designed for simplicity and understanding, not for large-scale applications.
 * Educational: Ideal for developers looking to understand Virtual DOM and reconciliation at a deeper level.
+* React-like Application Structure: I created an application structure that launches just like a typical React app, allowing you to use all the framework's features while freely modifying and experimenting with them. This makes the project an excellent platform for practicing and understanding the principles of the Virtual DOM and state management, providing an opportunity to explore and customize each component in depth.
