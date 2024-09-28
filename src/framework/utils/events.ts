@@ -1,4 +1,4 @@
-import type { NODE_LISTENERS } from "../types/global";
+import type { NODE_LISTENERS } from "../framework/types/global";
 
 export const addEventListener = (eventName: string, handler: () => void, el: HTMLElement) => el.addEventListener(eventName, handler);
 

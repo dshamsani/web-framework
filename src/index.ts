@@ -1,5 +1,5 @@
-import { createApp } from "./app";
-import { h, hString } from "./h";
+import { createApp } from "./framework/app";
+import { h, hString } from "./framework/h";
 
 // Counter using framework
 createApp({
