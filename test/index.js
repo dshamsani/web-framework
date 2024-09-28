@@ -1,5 +1,5 @@
 // import { destroyDOM } from "../src/destroy-dom.js";
-// import { Dispatcher } from "../src/disatcher.js";
+import { Dispatcher } from "../src/disatcher.js";
 import { h } from "../src/h.js";
 import { mountDOM } from "../src/mount-dom.js";
 
@@ -20,3 +20,10 @@ const vdom = h(
 );
 
 mountDOM(vdom, document.body);
+
+const dispatcher = new Dispatcher();
+
+dispatcher.subscribe("greet", (str) => console.log(`Hello ${str}`));
+dispatcher.afterEveryCommand(() => console.log("Done greeting"));
+
+dispatcher.dispatch("greet", "David");
