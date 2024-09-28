@@ -10,5 +10,4 @@
   },
   "include": ["src"],
   "exclude": ["node_modules", "dist"],
-  "ignorePatterns": [".eslintrc.cjs"],
 }
