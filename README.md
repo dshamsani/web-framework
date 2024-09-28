@@ -8,6 +8,7 @@ Please note: This framework is not production-ready and is not intended for inte
 
 ## ✨ Features
 * Custom Virtual DOM: A minimal implementation of the Virtual DOM to practice working with efficient UI updates.
+* State Manager: A simple state management system to keep track of UI state and trigger efficient re-renders.
 * Reconciliation Algorithm: Basic reconciliation logic to compare and update the DOM based on state changes.
 * Lightweight: Designed for simplicity and understanding, not for large-scale applications.
 * Educational: Ideal for developers looking to understand Virtual DOM and reconciliation at a deeper level.
