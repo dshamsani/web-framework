@@ -39,5 +39,15 @@ export default {
     }),
   ],
 
+  devServer: {
+    static: {
+      directory: path.join(process.cwd(), "dist"),
+    },
+    compress: true,
+    port: 3000,
+    open: true,
+    hot: true,
+  },
+
   mode: "development",
 };
