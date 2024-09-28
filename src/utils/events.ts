@@ -1,7 +1,9 @@
-export const addEventListener = (eventName, handler, el) => el.addEventListener(eventName, handler);
+import type { NODE_LISTENERS } from "../types/global";
+
+export const addEventListener = (eventName: string, handler: () => void, el: HTMLElement) => el.addEventListener(eventName, handler);
 
 // Adding event listeners to an element node
-export const addEventListeners = (listeners = {}, el) => {
+export const addEventListeners = (listeners: NODE_LISTENERS, el: HTMLElement) => {
   Object.entries(listeners).forEach(([eventName, handler]) => {
     addEventListener(eventName, handler, el);
   });
@@ -10,7 +12,7 @@ export const addEventListeners = (listeners = {}, el) => {
 };
 
 // Removing event listeners
-export const removeEventListeners = (listeners = {}, el) => {
+export const removeEventListeners = (listeners: NODE_LISTENERS, el: HTMLElement) => {
   Object.entries(listeners).forEach(([eventName, handler]) => {
     console.log("Object.entries  handler:", el);
     el.removeEventListener(eventName, handler);

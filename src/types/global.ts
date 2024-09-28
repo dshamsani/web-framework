@@ -119,29 +119,33 @@ export type HTML_TAGS =
   | "video"
   | "wbr";
 
-interface ELEMENT_NODE_PROPS {
+export interface NODE_PROPS {
   [key: string]: any;
 }
 
-export interface ELEMENT_NODE {
-  tag: HTML_TAGS;
-  props: ELEMENT_NODE_PROPS;
-  type: keyof DOM_TYPES_TYPE;
-  children: ELEMENT_NODE[];
+export interface NODE_LISTENERS {
+  [eventName: string]: () => void;
 }
 
-export interface ELEMENT_TEXT {
-  type: "text";
-  value: string;
-}
-
-export type hFunction = (
-  tag: HTML_TAGS,
-  props: ELEMENT_NODE_PROPS,
-  children: ELEMENT_NODE[]
-) => {
+export interface NODE_ELEMENT {
   type: "element";
   tag: HTML_TAGS;
-  props: ELEMENT_NODE_PROPS;
-  children: ELEMENT_NODE[];
-};
+  props: NODE_PROPS;
+  children: NODE_ELEMENT[];
+  el?: HTMLElement | Text | null;
+  listeners?: NODE_LISTENERS;
+}
+
+export interface NODE_FRAGMENT {
+  type: "fragment";
+  children: (NODE_TEXT | NODE_ELEMENT)[];
+  el?: HTMLElement | Text | null;
+}
+
+export interface NODE_TEXT {
+  type: "text";
+  value: string;
+  el?: Text | null;
+}
+
+export type VDOM = NODE_TEXT | NODE_FRAGMENT | NODE_ELEMENT;

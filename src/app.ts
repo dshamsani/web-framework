@@ -1,11 +1,23 @@
-import { destroyDOM } from "./destroy-dom.js";
-import { mountDOM } from "./mount-dom.js";
-import { Dispatcher } from "./disatcher.js";
+import type { VDOM } from "./types/global";
+
+import { destroyDOM } from "./destroy-dom";
+import { mountDOM } from "./mount-dom";
+import { Dispatcher } from "./disatcher";
 
 // Creates the application object
-export const createApp = ({ state, view, reducers = {} }) => {
-  let parentEl = null;
-  let vdom = null;
+export const createApp = ({
+  state,
+  view,
+  reducers = {},
+}: {
+  state: any;
+  view: (state: any, emit: (eventName: string, payload: any) => void) => VDOM;
+  reducers: {
+    [key: string]: (state: any, payload: any) => void;
+  };
+}) => {
+  let parentEl: HTMLElement | null = null;
+  let vdom: VDOM | null = null;
 
   const dispatcher = new Dispatcher();
 
@@ -21,7 +33,7 @@ export const createApp = ({ state, view, reducers = {} }) => {
     subscriptions.push(subs);
   }
 
-  function emit(eventName, payload) {
+  function emit(eventName: string, payload: any) {
     dispatcher.dispatch(eventName, payload);
   }
 
@@ -36,7 +48,7 @@ export const createApp = ({ state, view, reducers = {} }) => {
   }
 
   return {
-    mount(_parentEl) {
+    mount(_parentEl: HTMLElement) {
       parentEl = _parentEl;
       renderApp();
     },
