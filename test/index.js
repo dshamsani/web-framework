@@ -1,4 +1,5 @@
-import { destroyDOM } from "../src/destroy-dom.js";
+// import { destroyDOM } from "../src/destroy-dom.js";
+// import { Dispatcher } from "../src/disatcher.js";
 import { h } from "../src/h.js";
 import { mountDOM } from "../src/mount-dom.js";
 
