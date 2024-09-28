@@ -149,3 +149,5 @@ export interface NODE_TEXT {
 }
 
 export type VDOM = NODE_TEXT | NODE_FRAGMENT | NODE_ELEMENT;
+
+export type FC = (state: any, emit: (eventName: string, payload: any) => void) => VDOM;

@@ -1,7 +1,5 @@
+import { App } from "./App";
 import { createApp } from "./framework/app";
-import { h, hString } from "./framework/h";
-
-import "./style.css";
 
 // Counter using framework
 createApp({
@@ -12,13 +10,5 @@ createApp({
     remove: (state, amount) => state - amount,
   },
 
-  view: (state, emit) =>
-    h(
-      "button",
-      {
-        on: { click: () => emit("add", 1) },
-        className: ["first"],
-      },
-      [hString(state)]
-    ),
+  view: (state, emit) => App(state, emit),
 }).mount(document.body);
