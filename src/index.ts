@@ -7,6 +7,7 @@ createApp({
 
   reducers: {
     add: (state, amount) => state + amount,
+    remove: (state, amount) => state - amount,
   },
 
   view: (state, emit) =>
