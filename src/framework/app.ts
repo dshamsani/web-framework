@@ -3,6 +3,7 @@ import type { VDOM } from "./types/global";
 import { destroyDOM } from "./destroy-dom";
 import { mountDOM } from "./mount-dom";
 import { Dispatcher } from "./dispatcher";
+import { patchDOM } from "./patch-dom";
 
 // Creates the application object
 export const createApp = ({
@@ -39,18 +40,18 @@ export const createApp = ({
 
   // Renderes the app
   function renderApp() {
-    if (vdom) {
-      destroyDOM(vdom);
-    }
+    const newVdom = view(state, emit);
 
-    vdom = view(state, emit);
-    mountDOM(vdom, parentEl);
+    if (parentEl) {
+      patchDOM(vdom, newVdom, parentEl);
+    }
   }
 
   return {
     mount(_parentEl: HTMLElement) {
       parentEl = _parentEl;
-      renderApp();
+      vdom = view(state, emit);
+      mountDOM(vdom, parentEl);
     },
 
     unmount() {
